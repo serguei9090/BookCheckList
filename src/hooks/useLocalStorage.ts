@@ -4,7 +4,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
   // Get from local storage then
   // parse stored json or if none return initialValue
   const readValue = () => {
-    // Prevent build error "window is undefined" but keep keep working
+    // Prevent build error "window is undefined" but keep working
     if (typeof window === 'undefined') {
       return initialValue;
     }
