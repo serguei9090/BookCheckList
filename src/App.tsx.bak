@@ -13,7 +13,10 @@ interface AppProps {
 }
 
 function App({ initialBooks }: AppProps = {}) {
-  const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
+  const [readBookIds, setReadBookIds] = useLocalStorage<number[]>(
+    'readBookIds',
+    [],
+  );
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const books: Book[] = initialBooks || (booksData as Book[]);
@@ -21,19 +24,23 @@ function App({ initialBooks }: AppProps = {}) {
   const toggleRead = (id: number) => {
     setReadBookIds((prevIds) => {
       if (prevIds.includes(id)) {
-        return prevIds.filter(bookId => bookId !== id);
+        return prevIds.filter((bookId) => bookId !== id);
       } else {
         return [...prevIds, id];
       }
     });
   };
 
-  const categories = useMemo(() => Array.from(new Set(books.map(b => b.category))), [books]);
+  const categories = useMemo(
+    () => Array.from(new Set(books.map((b) => b.category))),
+    [books],
+  );
 
   // Filter logic
-  const filteredBooks = selectedCategory === 'All'
-    ? books
-    : books.filter(b => b.category === selectedCategory);
+  const filteredBooks =
+    selectedCategory === 'All'
+      ? books
+      : books.filter((b) => b.category === selectedCategory);
 
   const readCount = readBookIds.length;
   const totalCount = books.length;
@@ -42,10 +49,7 @@ function App({ initialBooks }: AppProps = {}) {
     <div className="app-container">
       <Header />
 
-      <ProgressStats
-        readCount={readCount}
-        totalCount={totalCount}
-      />
+      <ProgressStats readCount={readCount} totalCount={totalCount} />
 
       <CategoryFilter
         categories={categories}
@@ -54,7 +58,7 @@ function App({ initialBooks }: AppProps = {}) {
       />
 
       <main className="book-list" role="list">
-        {filteredBooks.map(book => (
+        {filteredBooks.map((book) => (
           <BookCard
             key={book.id}
             book={book}
@@ -65,9 +69,7 @@ function App({ initialBooks }: AppProps = {}) {
       </main>
 
       {filteredBooks.length === 0 && (
-        <p className="empty-state-message">
-          No books found in this category.
-        </p>
+        <p className="empty-state-message">No books found in this category.</p>
       )}
     </div>
   );

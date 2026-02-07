@@ -190,3 +190,17 @@
   border-radius: 999px;
   transition: width 0.5s ease-out;
 }
+
+/* Empty State */
+.empty-state-message {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 2rem;
+}
+
+/* Empty State */
+.empty-state-message {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 2rem;
+}
