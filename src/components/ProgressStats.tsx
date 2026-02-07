@@ -13,7 +13,7 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ readCount, downloadedCoun
   const downloadedPercentage = totalCount > 0 ? Math.round((downloadedCount / totalCount) * PERCENTAGE_MAX) : 0;
 
   return (
-    <div className="progress-stats" aria-label="Reading progress">
+    <div className="progress-stats" aria-label="Progress statistics">
       <div className="stats-row">
         <div className="stats-info">
           <span className="stats-count">{readCount} of {totalCount} books read</span>
