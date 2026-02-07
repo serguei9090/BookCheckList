@@ -1,0 +1,3 @@
+# Initial Concept
+
+Create a React Reading Tracker app that works as a dynamic checklist. It should allow categorizing books (classics, contemporary, thrillers), show real-time progress stats (percentage and counter), and have an elegant interface with quick category filters. The app should use localStorage to save progress locally in a single-file format. For this project we use bun. We also want to have the ability to compile the project with the built-in github command to serve a page in GitHub from this React project. Use a modern Kokonut UI Use JSON as a database to save the books and a checklist for books downloaded and read.
