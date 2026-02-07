@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';
 import Header from './components/Header';
 import ProgressStats from './components/ProgressStats';
@@ -24,7 +24,7 @@ function App() {
     });
   };
 
-  const categories = Array.from(new Set(books.map(b => b.category)));
+  const categories = useMemo(() => Array.from(new Set(books.map(b => b.category))), [books]);
 
   // Filter logic
   const filteredBooks = selectedCategory === 'All'
