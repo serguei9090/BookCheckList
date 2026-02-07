@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "category": "Classics"
+  },
+  {
+    "id": 2,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "category": "Classics"
+  },
+  {
+    "id": 3,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "category": "Classics"
+  },
+  {
+    "id": 4,
+    "title": "Normal People",
+    "author": "Sally Rooney",
+    "category": "Contemporary"
+  },
+  {
+    "id": 5,
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "category": "Thrillers"
+  },
+  {
+    "id": 6,
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "category": "Thrillers"
+  },
+  {
+    "id": 7,
+    "title": "Where the Crawdads Sing",
+    "author": "Delia Owens",
+    "category": "Contemporary"
+  },
+  {
+    "id": 8,
+    "title": "1984",
+    "author": "George Orwell",
+    "category": "Classics"
+  },
+  {
+    "id": 9,
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "category": "Thrillers"
+  },
+  {
+    "id": 10,
+    "title": "A Little Life",
+    "author": "Hanya Yanagihara",
+    "category": "Contemporary"
+  }
+]

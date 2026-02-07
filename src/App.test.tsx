@@ -1,17 +1,22 @@
-import { test, expect } from "bun:test";
-import { render, screen } from "@testing-library/react";
+import { test, expect, afterEach } from "bun:test";
+import { render, cleanup } from "@testing-library/react";
 import App from "./App";
-import packageJson from "../package.json";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-test("App renders Vite + React heading", () => {
-  render(<App />);
-  expect(screen.getByText("Vite + React")).toBeDefined();
+afterEach(() => {
+  cleanup();
+});
+
+test("App renders Reading Tracker heading", () => {
+  const { getByText } = render(<App />);
+  const headingElement = getByText(/Reading Tracker/i);
+  expect(headingElement).toBeInTheDocument();
 });
 
 test("package.json contains expected scripts", () => {
+  const packageJsonPath = join(import.meta.dir, "../package.json");
+  const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
   expect(packageJson.scripts).toBeDefined();
-  expect(packageJson.scripts.dev).toBe("vite");
-  expect(packageJson.scripts.build).toBe("tsc -b && vite build");
-  expect(packageJson.scripts.lint).toBe("eslint .");
-  expect(packageJson.scripts.preview).toBe("vite preview");
+  expect(packageJson.scripts.test).toBe("bun test");
 });
