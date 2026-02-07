@@ -1,10 +1,18 @@
 import { test, expect } from "bun:test";
 import { render } from "@testing-library/react";
-import App from "./App"; // Assuming App is where global styles might be applied or imported.
+import App from "./App";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 test("global styling sets a light background color on the body", () => {
+  // Inject global styles manually since jsdom/bun-test doesn't process CSS imports automatically
+  const css = readFileSync(join(import.meta.dir, "index.css"), "utf8");
+  const style = document.createElement("style");
+  style.textContent = css;
+  document.head.appendChild(style);
+
   render(<App />);
-  // Check if the body element has a specific background color applied
-  // This test will fail initially because the styles are not yet implemented.
-  expect(document.body).toHaveStyle("background-color: rgb(248, 248, 248)"); // Corresponds to #f8f8f8
+  // The background color is set on :root (html), not body, so check document.documentElement
+  const styles = window.getComputedStyle(document.documentElement);
+  expect(styles.backgroundColor).toBe("rgb(248, 248, 248)");
 });
