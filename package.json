@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "bun test",
-    "predeploy": "bun run build",
+    "predeploy": "VITE_BASE_PATH=\/BookCheckList\/ bun run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
