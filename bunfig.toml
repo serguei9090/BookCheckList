@@ -1,6 +1,7 @@
 [test]
 environment = "jsdom"
 tsconfig = "tsconfig.test.json"
+preload = ["./test/setup.ts"]
 
 [typescript]
 jsx = "react-jsx"

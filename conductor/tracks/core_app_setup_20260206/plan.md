@@ -8,8 +8,8 @@
     - [x] Configure `bunfig.toml` or equivalent for development setup.
     - [x] Implement a placeholder root component (e.g., `App.tsx`).
 
-- [ ] **Task: Setup Basic Kokonut UI Structure**
-    - [ ] Write tests for global styling and theme application.
+- [~] **Task: Setup Basic Kokonut UI Structure**
+    - [~] Write tests for global styling and theme application.
     - [ ] Integrate a styling solution for Kokonut UI (e.g., Tailwind CSS with custom theme, or a lightweight CSS-in-JS setup).
     - [ ] Define global styles for "Elegant & Minimalist" design with "Clean Lines & Subtle Gradients".
     - [ ] Create a basic layout component (e.g., `Layout.tsx`) that includes a header and main content area.
