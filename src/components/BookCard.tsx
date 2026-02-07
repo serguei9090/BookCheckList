@@ -5,6 +5,8 @@ interface BookCardProps {
   book: Book;
   isRead: boolean;
   onToggleRead: (id: number) => void;
+  isDownloaded: boolean;
+  onToggleDownloaded: (id: number) => void;
 }
 
 const getCategoryStyles = (category: string) => {
@@ -20,7 +22,7 @@ const getCategoryStyles = (category: string) => {
   }
 };
 
-const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead }) => {
+const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead, isDownloaded, onToggleDownloaded }) => {
   return (
     <div
       className={`bg-white rounded-xl p-6 shadow-sm border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md hover:border-amber-300 ${
@@ -36,24 +38,46 @@ const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead }) => {
           {book.category}
         </span>
       </div>
-      <button
-        onClick={() => onToggleRead(book.id)}
-        className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${
-          isRead
-            ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100'
-            : 'bg-stone-900 text-white hover:bg-stone-700 shadow-sm'
-        }`}
-        aria-pressed={isRead}
-        aria-label={`Mark ${book.title} as ${isRead ? 'unread' : 'read'}`}
-      >
-        {isRead ? (
-          <>
-            <span className="text-emerald-500">✓</span> Read
-          </>
-        ) : (
-          '○ Mark as Read'
-        )}
-      </button>
+
+      <div className="flex flex-col gap-2">
+        <button
+          onClick={() => onToggleRead(book.id)}
+          className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${
+            isRead
+              ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100'
+              : 'bg-stone-900 text-white hover:bg-stone-700 shadow-sm'
+          }`}
+          aria-pressed={isRead}
+          aria-label={`Mark ${book.title} as ${isRead ? 'unread' : 'read'}`}
+        >
+          {isRead ? (
+            <>
+              <span className="text-emerald-500">✓</span> Read
+            </>
+          ) : (
+            '○ Mark as Read'
+          )}
+        </button>
+
+        <button
+          onClick={() => onToggleDownloaded(book.id)}
+          className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${
+            isDownloaded
+              ? 'bg-sky-50 text-sky-600 border border-sky-200 hover:bg-sky-100'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-200 shadow-sm'
+          }`}
+          aria-pressed={isDownloaded}
+          aria-label={`Mark ${book.title} as ${isDownloaded ? 'not downloaded' : 'downloaded'}`}
+        >
+          {isDownloaded ? (
+            <>
+              <span className="text-sky-500">✓</span> Downloaded
+            </>
+          ) : (
+            '○ Download'
+          )}
+        </button>
+      </div>
     </div>
   );
 };

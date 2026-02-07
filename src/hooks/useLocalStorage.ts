@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { isDev } from '../utils/env';
 
 function useLocalStorage<T>(key: string, initialValue: T) {
   // Get from local storage then
@@ -13,7 +14,9 @@ function useLocalStorage<T>(key: string, initialValue: T) {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      console.warn(`Error reading localStorage key “${key}”:`, error);
+      if (isDev) {
+        console.warn(`Error reading localStorage key “${key}”:`, error);
+      }
       return initialValue;
     }
   };
@@ -31,7 +34,9 @@ function useLocalStorage<T>(key: string, initialValue: T) {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
-      console.warn(`Error setting localStorage key “${key}”:`, error);
+      if (isDev) {
+        console.warn(`Error setting localStorage key “${key}”:`, error);
+      }
     }
   }, [key, storedValue]);
 
