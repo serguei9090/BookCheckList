@@ -5,9 +5,11 @@ interface BookCardProps {
   book: Book;
   isRead: boolean;
   onToggleRead: (id: number) => void;
+  isDownloaded: boolean;
+  onToggleDownloaded: (id: number) => void;
 }
 
-const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead }) => {
+const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead, isDownloaded, onToggleDownloaded }) => {
   return (
     <div
       className={`book-card ${isRead ? 'read' : ''}`}
@@ -21,14 +23,24 @@ const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead }) => {
           {book.category}
         </span>
       </div>
-      <button
-        onClick={() => onToggleRead(book.id)}
-        className={`toggle-btn ${isRead ? 'read-btn' : 'unread-btn'}`}
-        aria-pressed={isRead}
-        aria-label={`Mark ${book.title} as ${isRead ? 'unread' : 'read'}`}
-      >
-        {isRead ? '✓ Read' : '○ Mark as Read'}
-      </button>
+      <div className="book-actions">
+        <button
+          onClick={() => onToggleRead(book.id)}
+          className={`toggle-btn ${isRead ? 'read-btn' : 'unread-btn'}`}
+          aria-pressed={isRead}
+          aria-label={`Mark ${book.title} as ${isRead ? 'unread' : 'read'}`}
+        >
+          {isRead ? '✓ Read' : '○ Mark as Read'}
+        </button>
+        <button
+          onClick={() => onToggleDownloaded(book.id)}
+          className={`toggle-btn ${isDownloaded ? 'downloaded-btn' : 'not-downloaded-btn'}`}
+          aria-pressed={isDownloaded}
+          aria-label={`Mark ${book.title} as ${isDownloaded ? 'not downloaded' : 'downloaded'}`}
+        >
+          {isDownloaded ? '✓ Downloaded' : '○ Download'}
+        </button>
+      </div>
     </div>
   );
 };

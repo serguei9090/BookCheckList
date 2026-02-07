@@ -7,10 +7,13 @@ export interface Book {
 
 export interface ReadingProgress {
   readBookIds: number[];
+  downloadedBookIds: number[];
 }
 
 export interface Stats {
   totalBooks: number;
   readCount: number;
-  percentage: number;
+  downloadedCount: number;
+  readPercentage: number;
+  downloadedPercentage: number;
 }

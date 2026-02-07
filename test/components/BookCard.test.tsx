@@ -1,4 +1,4 @@
-import { test, expect, afterEach } from "bun:test";
+import { test, expect, afterEach, jest } from "bun:test";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import BookCard from "../../src/components/BookCard";
 import type { Book } from "../../src/types";
@@ -15,7 +15,15 @@ const mockBook: Book = {
 };
 
 test("BookCard renders book information correctly", () => {
-  const { getByText } = render(<BookCard book={mockBook} isRead={false} onToggleRead={() => {}} />);
+  const { getByText } = render(
+    <BookCard
+      book={mockBook}
+      isRead={false}
+      onToggleRead={() => {}}
+      isDownloaded={false}
+      onToggleDownloaded={() => {}}
+    />
+  );
 
   expect(getByText("Test Book")).toBeDefined();
   expect(getByText("by Test Author")).toBeDefined();
@@ -23,19 +31,83 @@ test("BookCard renders book information correctly", () => {
 });
 
 test("BookCard shows correct read status button", () => {
-  const { getByText, rerender } = render(<BookCard book={mockBook} isRead={false} onToggleRead={() => {}} />);
+  const { getByText, rerender } = render(
+    <BookCard
+      book={mockBook}
+      isRead={false}
+      onToggleRead={() => {}}
+      isDownloaded={false}
+      onToggleDownloaded={() => {}}
+    />
+  );
   expect(getByText("○ Mark as Read")).toBeDefined();
 
-  rerender(<BookCard book={mockBook} isRead={true} onToggleRead={() => {}} />);
+  rerender(
+    <BookCard
+      book={mockBook}
+      isRead={true}
+      onToggleRead={() => {}}
+      isDownloaded={false}
+      onToggleDownloaded={() => {}}
+    />
+  );
   expect(getByText("✓ Read")).toBeDefined();
 });
 
-test("BookCard calls onToggleRead when button is clicked", () => {
-  let clickedId = -1;
-  const handleToggle = (id: number) => { clickedId = id; };
+test("BookCard shows correct downloaded status button", () => {
+  const { getByText, rerender } = render(
+    <BookCard
+      book={mockBook}
+      isRead={false}
+      onToggleRead={() => {}}
+      isDownloaded={false}
+      onToggleDownloaded={() => {}}
+    />
+  );
+  expect(getByText("○ Download")).toBeDefined();
 
-  const { getByRole } = render(<BookCard book={mockBook} isRead={false} onToggleRead={handleToggle} />);
+  rerender(
+    <BookCard
+      book={mockBook}
+      isRead={false}
+      onToggleRead={() => {}}
+      isDownloaded={true}
+      onToggleDownloaded={() => {}}
+    />
+  );
+  expect(getByText("✓ Downloaded")).toBeDefined();
+});
 
-  fireEvent.click(getByRole("button"));
-  expect(clickedId).toBe(1);
+test("BookCard calls onToggleRead when read button is clicked", () => {
+  const handleToggle = jest.fn();
+
+  const { getByText } = render(
+    <BookCard
+      book={mockBook}
+      isRead={false}
+      onToggleRead={handleToggle}
+      isDownloaded={false}
+      onToggleDownloaded={() => {}}
+    />
+  );
+
+  fireEvent.click(getByText("○ Mark as Read"));
+  expect(handleToggle).toHaveBeenCalledWith(1);
+});
+
+test("BookCard calls onToggleDownloaded when download button is clicked", () => {
+  const handleToggle = jest.fn();
+
+  const { getByText } = render(
+    <BookCard
+      book={mockBook}
+      isRead={false}
+      onToggleRead={() => {}}
+      isDownloaded={false}
+      onToggleDownloaded={handleToggle}
+    />
+  );
+
+  fireEvent.click(getByText("○ Download"));
+  expect(handleToggle).toHaveBeenCalledWith(1);
 });

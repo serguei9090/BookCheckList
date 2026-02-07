@@ -190,3 +190,48 @@
   border-radius: 999px;
   transition: width 0.5s ease-out;
 }
+
+/* Book Actions */
+.book-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.book-actions .toggle-btn {
+  flex: 1;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+.not-downloaded-btn {
+  background: var(--secondary);
+  color: white;
+}
+
+.not-downloaded-btn:hover {
+  background: var(--accent);
+}
+
+.downloaded-btn {
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+.downloaded-btn:hover {
+  background: #eff6ff;
+}
+
+/* Updated Stats Layout */
+.stats-row {
+  margin-bottom: 1.5rem;
+}
+
+.stats-row:last-child {
+  margin-bottom: 0;
+}
+
+.stats-row .progress-bar-fill.downloaded {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}

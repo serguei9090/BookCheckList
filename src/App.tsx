@@ -10,12 +10,23 @@ import './components/components.css';
 
 function App() {
   const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
+  const [downloadedBookIds, setDownloadedBookIds] = useLocalStorage<number[]>('downloadedBookIds', []);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const books: Book[] = booksData as Book[];
 
   const toggleRead = (id: number) => {
     setReadBookIds((prevIds) => {
+      if (prevIds.includes(id)) {
+        return prevIds.filter(bookId => bookId !== id);
+      } else {
+        return [...prevIds, id];
+      }
+    });
+  };
+
+  const toggleDownloaded = (id: number) => {
+    setDownloadedBookIds((prevIds) => {
       if (prevIds.includes(id)) {
         return prevIds.filter(bookId => bookId !== id);
       } else {
@@ -32,6 +43,7 @@ function App() {
     : books.filter(b => b.category === selectedCategory);
 
   const readCount = readBookIds.length;
+  const downloadedCount = downloadedBookIds.length;
   const totalCount = books.length;
 
   return (
@@ -40,6 +52,7 @@ function App() {
 
       <ProgressStats
         readCount={readCount}
+        downloadedCount={downloadedCount}
         totalCount={totalCount}
       />
 
@@ -56,6 +69,8 @@ function App() {
             book={book}
             isRead={readBookIds.includes(book.id)}
             onToggleRead={toggleRead}
+            isDownloaded={downloadedBookIds.includes(book.id)}
+            onToggleDownloaded={toggleDownloaded}
           />
         ))}
       </main>
