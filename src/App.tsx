@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
+import Header from './components/Header';
+import ProgressStats from './components/ProgressStats';
+import CategoryFilter from './components/CategoryFilter';
+import BookCard from './components/BookCard';
+import booksData from './data/books.json';
+import type { Book } from './types';
+import './components/components.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+
+  const books: Book[] = booksData as Book[];
+
+  const toggleRead = (id: number) => {
+    setReadBookIds((prevIds) => {
+      if (prevIds.includes(id)) {
+        return prevIds.filter(bookId => bookId !== id);
+      } else {
+        return [...prevIds, id];
+      }
+    });
+  };
+
+  const categories = Array.from(new Set(books.map(b => b.category)));
+
+  // Filter logic
+  const filteredBooks = selectedCategory === 'All'
+    ? books
+    : books.filter(b => b.category === selectedCategory);
+
+  const readCount = readBookIds.length;
+  const totalCount = books.length;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer" aria-label="Vite website">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer" aria-label="React website">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div className="app-container">
+      <Header />
+
+      <ProgressStats
+        readCount={readCount}
+        totalCount={totalCount}
+      />
+
+      <CategoryFilter
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
+      />
+
+      <main className="book-list" role="list">
+        {filteredBooks.map(book => (
+          <BookCard
+            key={book.id}
+            book={book}
+            isRead={readBookIds.includes(book.id)}
+            onToggleRead={toggleRead}
+          />
+        ))}
+      </main>
+
+      {filteredBooks.length === 0 && (
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
+          No books found in this category.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,13 +1,17 @@
-import { test, expect } from "bun:test";
-import { render } from "@testing-library/react";
+import { test, expect, afterEach } from "bun:test";
+import { render, cleanup } from "@testing-library/react";
 import App from "./App";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-test("App renders Vite + React heading", () => {
+afterEach(() => {
+  cleanup();
+});
+
+test("App renders Reading Tracker heading", () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/Vite \+ React/i);
-  expect(linkElement).toBeInTheDocument();
+  const headingElement = getByText(/Reading Tracker/i);
+  expect(headingElement).toBeInTheDocument();
 });
 
 test("package.json contains expected scripts", () => {
