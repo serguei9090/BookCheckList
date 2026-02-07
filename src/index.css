@@ -1,11 +1,42 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; /* Serif for "sophisticated" look */
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: #213547;
-  background-color: #f8f8f8;
+  /* Primary Neutrals (Stone) */
+  --bg-stone-50: #f8f8f7;
+  --text-stone-900: #1c1917;
+  --text-stone-800: #292524;
+  --text-stone-500: #78716c;
+  --border-stone-200: #e7e5e4;
+  --text-stone-400: #a8a29e;
+  --bg-stone-800: #292524;
+
+  /* Accent Colors (Amber & Gold) */
+  --text-amber-800: #92400e;
+  --bg-amber-600: #d97706;
+  --border-amber-300: #fcd34d;
+  --bg-amber-50: #fffbeb; /* Light amber bg for badges maybe */
+
+  /* Success Colors (Emerald) */
+  --text-emerald-600: #059669;
+  --text-emerald-500: #10b981;
+
+  /* UI Elements */
+  --bg-white: #ffffff;
+
+  /* Semantic Map */
+  --bg-page: var(--bg-stone-50);
+  --text-main: var(--text-stone-900);
+  --text-heading: var(--text-stone-800);
+  --text-secondary: var(--text-stone-500);
+  --text-muted: var(--text-stone-400);
+  --border-color: var(--border-stone-200);
+  --bg-card: var(--bg-white);
+
+  color-scheme: light;
+  color: var(--text-main);
+  background-color: var(--bg-page);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +44,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #747bff;
-}
-
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  place-items: start;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg-page);
+  font-family: system-ui, sans-serif; /* Default sans, headings will be serif */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #f9f9f9;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-  }
-  a:hover {
-    color: #535bf2;
-  }
-  button {
-    background-color: #1a1a1a;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  color: var(--text-heading);
 }

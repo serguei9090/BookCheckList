@@ -3,6 +3,7 @@ export interface Book {
   title: string;
   author: string;
   category: 'Classics' | 'Contemporary' | 'Thrillers';
+  description: string;
 }
 
 export interface ReadingProgress {

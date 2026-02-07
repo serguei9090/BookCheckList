@@ -8,10 +8,14 @@ afterEach(() => {
   cleanup();
 });
 
-test("App renders Reading Tracker heading", () => {
+test("App renders Reading Checklist heading", () => {
   const { getByText } = render(<App />);
-  const headingElement = getByText(/Reading Tracker/i);
-  expect(headingElement).toBeInTheDocument();
+  expect(getByText("📚 Reading Checklist")).toBeInTheDocument();
+});
+
+test("App renders search bar", () => {
+  const { getByPlaceholderText } = render(<App />);
+  expect(getByPlaceholderText(/Search title or author/i)).toBeInTheDocument();
 });
 
 test("package.json contains expected scripts", () => {

@@ -9,16 +9,30 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ readCount, totalCount }) 
   const percentage = totalCount > 0 ? Math.round((readCount / totalCount) * 100) : 0;
 
   return (
-    <div className="progress-stats" aria-label="Reading progress">
-      <div className="stats-info">
-        <span className="stats-count">{readCount} of {totalCount} books read</span>
-        <span className="stats-percent">{percentage}%</span>
+    <div className="stats-container">
+      <div className="stat-card">
+        <div className="stat-value">{totalCount}</div>
+        <div className="stat-label">Total Books</div>
       </div>
-      <div className="progress-bar-bg" role="progressbar" aria-valuenow={percentage} aria-valuemin={0} aria-valuemax={100}>
-        <div
-          className="progress-bar-fill"
-          style={{ width: `${percentage}%` }}
-        />
+
+      <div className="stat-card">
+        <div className={`stat-value ${readCount > 0 ? 'green' : ''}`}>{readCount}</div>
+        <div className="stat-label">Completed</div>
+      </div>
+
+      <div className="stat-card">
+        <div className="stat-value">{percentage}%</div>
+        <div className="stat-label">Progress</div>
+        <div className="progress-bar-container" style={{ width: '80%', marginTop: '0.5rem' }}>
+          <div
+            className="progress-bar-fill"
+            style={{ width: `${percentage}%` }}
+            role="progressbar"
+            aria-valuenow={percentage}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          />
+        </div>
       </div>
     </div>
   );

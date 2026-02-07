@@ -11,6 +11,7 @@ import './components/components.css';
 function App() {
   const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   const books: Book[] = booksData as Book[];
 
@@ -27,16 +28,19 @@ function App() {
   const categories = Array.from(new Set(books.map(b => b.category)));
 
   // Filter logic
-  const filteredBooks = selectedCategory === 'All'
-    ? books
-    : books.filter(b => b.category === selectedCategory);
+  const filteredBooks = books.filter(book => {
+    const matchesCategory = selectedCategory === 'All' || book.category === selectedCategory;
+    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          book.author.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const readCount = readBookIds.length;
   const totalCount = books.length;
 
   return (
     <div className="app-container">
-      <Header />
+      <Header onSearch={setSearchTerm} />
 
       <ProgressStats
         readCount={readCount}
@@ -62,7 +66,7 @@ function App() {
 
       {filteredBooks.length === 0 && (
         <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
-          No books found in this category.
+          No books found matching your criteria.
         </p>
       )}
     </div>

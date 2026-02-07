@@ -3,60 +3,70 @@
     "id": 1,
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
-    "category": "Classics"
+    "category": "Classics",
+    "description": "A classic romance novel depicting the manners and matrimonial machinations of the British Regency."
   },
   {
     "id": 2,
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
-    "category": "Classics"
+    "category": "Classics",
+    "description": "A novel about the serious issues of rape and racial inequality, told through the eyes of young Scout Finch."
   },
   {
     "id": 3,
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
-    "category": "Classics"
+    "category": "Classics",
+    "description": "A tragic story of Jay Gatsby, a self-made millionaire, and his pursuit of Daisy Buchanan."
   },
   {
     "id": 4,
     "title": "Normal People",
     "author": "Sally Rooney",
-    "category": "Contemporary"
+    "category": "Contemporary",
+    "description": "An exploration of the complex relationship between two teenagers, Marianne and Connell, in modern Ireland."
   },
   {
     "id": 5,
     "title": "The Girl on the Train",
     "author": "Paula Hawkins",
-    "category": "Thrillers"
+    "category": "Thrillers",
+    "description": "A psychological thriller about an alcoholic divorcee who becomes entangled in a missing persons investigation."
   },
   {
     "id": 6,
     "title": "Gone Girl",
     "author": "Gillian Flynn",
-    "category": "Thrillers"
+    "category": "Thrillers",
+    "description": "A suspense novel about a woman who disappears on her fifth wedding anniversary and the husband who becomes the prime suspect."
   },
   {
     "id": 7,
     "title": "Where the Crawdads Sing",
     "author": "Delia Owens",
-    "category": "Contemporary"
+    "category": "Contemporary",
+    "description": "A murder mystery and a coming-of-age story about a young girl who raises herself in the marshes of North Carolina."
   },
   {
     "id": 8,
     "title": "1984",
     "author": "George Orwell",
-    "category": "Classics"
+    "category": "Classics",
+    "description": "A dystopian social science fiction novel and cautionary tale about the future."
   },
   {
     "id": 9,
     "title": "The Silent Patient",
     "author": "Alex Michaelides",
-    "category": "Thrillers"
+    "category": "Thrillers",
+    "description": "A psychological thriller about a woman's act of violence against her husband and the therapist obsessed with uncovering her motive."
   },
   {
     "id": 10,
     "title": "A Little Life",
     "author": "Hanya Yanagihara",
-    "category": "Contemporary"
+    "category": "Contemporary",
+    "description": "A novel following four college classmates as they move to New York in search of fame and fortune."
   }
 ]
