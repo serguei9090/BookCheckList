@@ -6,7 +6,6 @@ import CategoryFilter from './components/CategoryFilter';
 import BookCard from './components/BookCard';
 import booksData from './data/books.json';
 import type { Book } from './types';
-import './components/components.css';
 
 function App() {
   const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
@@ -35,7 +34,7 @@ function App() {
   const totalCount = books.length;
 
   return (
-    <div className="app-container">
+    <div className="max-w-4xl mx-auto p-8 min-h-screen">
       <Header />
 
       <ProgressStats
@@ -49,7 +48,7 @@ function App() {
         onSelectCategory={setSelectedCategory}
       />
 
-      <main className="book-list" role="list">
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
         {filteredBooks.map(book => (
           <BookCard
             key={book.id}
@@ -61,7 +60,7 @@ function App() {
       </main>
 
       {filteredBooks.length === 0 && (
-        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
+        <p className="text-center text-stone-500 mt-8">
           No books found in this category.
         </p>
       )}

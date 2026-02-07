@@ -9,14 +9,16 @@ afterEach(() => {
 test("ProgressStats displays correct counts and percentage", () => {
   const { getByText } = render(<ProgressStats readCount={5} totalCount={10} />);
 
-  expect(getByText("5 of 10 books read")).toBeDefined();
+  expect(getByText("5")).toBeDefined();
+  expect(getByText(/of 10 books read/)).toBeDefined();
   expect(getByText("50%")).toBeDefined();
 });
 
 test("ProgressStats handles zero totalCount", () => {
-  const { getByText } = render(<ProgressStats readCount={0} totalCount={0} />);
+  const { getAllByText, getByText } = render(<ProgressStats readCount={0} totalCount={0} />);
 
-  expect(getByText("0 of 0 books read")).toBeDefined();
+  expect(getAllByText("0")).toBeDefined();
+  expect(getByText(/of 0 books read/)).toBeDefined();
   expect(getByText("0%")).toBeDefined();
 });
 
