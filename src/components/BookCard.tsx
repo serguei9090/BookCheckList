@@ -33,4 +33,4 @@ const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead }) => {
   );
 };
 
-export default BookCard;
+export default React.memo(BookCard);
