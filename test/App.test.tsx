@@ -1,6 +1,6 @@
 import { test, expect, afterEach } from "bun:test";
 import { render, cleanup } from "@testing-library/react";
-import App from "./App";
+import App from "../src/App";
 import { readFileSync } from "fs";
 import { join } from "path";
 

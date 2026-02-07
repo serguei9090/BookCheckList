@@ -1,7 +1,7 @@
 import { test, expect, afterEach } from "bun:test";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import BookCard from "./BookCard";
-import { Book } from "../types";
+import BookCard from "../../src/components/BookCard";
+import type { Book } from "../../src/types";
 
 afterEach(() => {
   cleanup();
