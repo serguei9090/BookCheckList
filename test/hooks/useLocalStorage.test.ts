@@ -1,6 +1,6 @@
 import { test, expect, afterEach } from "bun:test";
 import { renderHook, act, cleanup } from "@testing-library/react";
-import useLocalStorage from "./useLocalStorage";
+import useLocalStorage from "../../src/hooks/useLocalStorage";
 
 afterEach(() => {
   cleanup();

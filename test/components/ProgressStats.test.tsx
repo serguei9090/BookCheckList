@@ -1,6 +1,6 @@
 import { test, expect, afterEach } from "bun:test";
 import { render, cleanup } from "@testing-library/react";
-import ProgressStats from "./ProgressStats";
+import ProgressStats from "../../src/components/ProgressStats";
 
 afterEach(() => {
   cleanup();
