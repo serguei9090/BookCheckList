@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header className="app-header">
       <h1>📚 Reading Tracker</h1>
@@ -8,5 +6,4 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
 export default Header;
