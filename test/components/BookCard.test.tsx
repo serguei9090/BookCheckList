@@ -23,11 +23,13 @@ test("BookCard renders book information correctly", () => {
 });
 
 test("BookCard shows correct read status button", () => {
-  const { getByText, rerender } = render(<BookCard book={mockBook} isRead={false} onToggleRead={() => {}} />);
-  expect(getByText("○ Mark as Read")).toBeDefined();
+  const { getByRole, rerender } = render(<BookCard book={mockBook} isRead={false} onToggleRead={() => {}} />);
+  // Matches "Mark Test Book as read"
+  expect(getByRole("button", { name: /Mark .* as read/i })).toBeDefined();
 
   rerender(<BookCard book={mockBook} isRead={true} onToggleRead={() => {}} />);
-  expect(getByText("✓ Read")).toBeDefined();
+  // Matches "Mark Test Book as unread"
+  expect(getByRole("button", { name: /Mark .* as unread/i })).toBeDefined();
 });
 
 test("BookCard calls onToggleRead when button is clicked", () => {
