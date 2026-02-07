@@ -6,7 +6,6 @@ import CategoryFilter from './components/CategoryFilter';
 import BookCard from './components/BookCard';
 import booksData from './data/books.json';
 import type { Book } from './types';
-import './components/components.css';
 
 function App() {
   const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
@@ -61,7 +60,7 @@ function App() {
       </main>
 
       {filteredBooks.length === 0 && (
-        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
+        <p className="text-center text-stone-400 mt-8">
           No books found in this category.
         </p>
       )}
