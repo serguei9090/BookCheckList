@@ -2,11 +2,11 @@
 
 ## Phase 1: Project Setup and Initial UI
 
-- [ ] **Task: Initialize React Project with Bun**
-    - [ ] Write tests for initial project structure (e.g., verify `package.json` scripts, basic component rendering).
-    - [ ] Create a new React project using Bun.
-    - [ ] Configure `bunfig.toml` or equivalent for development setup.
-    - [ ] Implement a placeholder root component (e.g., `App.tsx`).
+- [~] **Task: Initialize React Project with Bun**
+    - [x] Write tests for initial project structure (e.g., verify `package.json` scripts, basic component rendering).
+    - [x] Create a new React project using Bun.
+    - [x] Configure `bunfig.toml` or equivalent for development setup.
+    - [x] Implement a placeholder root component (e.g., `App.tsx`).
 
 - [ ] **Task: Setup Basic Kokonut UI Structure**
     - [ ] Write tests for global styling and theme application.

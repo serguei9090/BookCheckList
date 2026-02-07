@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Core Application Setup and Local Data Persistence**
+- [~] **Track: Core Application Setup and Local Data Persistence**
   *Link: [./tracks/core_app_setup_20260206/](./tracks/core_app_setup_20260206/)*

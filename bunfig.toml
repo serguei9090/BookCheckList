@@ -1,0 +1,6 @@
+[test]
+environment = "jsdom"
+tsconfig = "tsconfig.test.json"
+
+[typescript]
+jsx = "react-jsx"
