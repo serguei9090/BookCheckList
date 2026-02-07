@@ -71,3 +71,21 @@ export default defineConfig([
   },
 ])
 ```
+
+## Deployment
+
+### Render
+
+This project is configured for deployment on Render.
+The build command is `bun install && bun run build`, and the publish directory is `dist`.
+Render will automatically deploy the latest changes from the `main` branch.
+
+### GitHub Pages
+
+To deploy to GitHub Pages manually:
+
+```bash
+bun run deploy
+```
+
+This script builds the project with the correct base path and pushes the `dist` folder to the `gh-pages` branch.
