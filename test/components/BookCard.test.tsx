@@ -14,8 +14,16 @@ const mockBook: Book = {
   category: "Classics"
 };
 
+const defaultProps = {
+  book: mockBook,
+  isRead: false,
+  onToggleRead: () => {},
+  isDownloaded: false,
+  onToggleDownloaded: () => {}
+};
+
 test("BookCard renders book information correctly", () => {
-  const { getByText } = render(<BookCard book={mockBook} isRead={false} onToggleRead={() => {}} />);
+  const { getByText } = render(<BookCard {...defaultProps} />);
 
   expect(getByText("Test Book")).toBeDefined();
   expect(getByText("by Test Author")).toBeDefined();
@@ -23,21 +31,41 @@ test("BookCard renders book information correctly", () => {
 });
 
 test("BookCard shows correct read status button", () => {
-  const { getByRole, rerender } = render(<BookCard book={mockBook} isRead={false} onToggleRead={() => {}} />);
+  const { getByRole, rerender } = render(<BookCard {...defaultProps} />);
   // Matches "Mark Test Book as read"
   expect(getByRole("button", { name: /Mark .* as read/i })).toBeDefined();
 
-  rerender(<BookCard book={mockBook} isRead={true} onToggleRead={() => {}} />);
+  rerender(<BookCard {...defaultProps} isRead={true} />);
   // Matches "Mark Test Book as unread"
   expect(getByRole("button", { name: /Mark .* as unread/i })).toBeDefined();
 });
 
-test("BookCard calls onToggleRead when button is clicked", () => {
+test("BookCard shows correct download status button", () => {
+  const { getByRole, rerender } = render(<BookCard {...defaultProps} />);
+  // Matches "Mark Test Book as downloaded"
+  expect(getByRole("button", { name: /Mark .* as downloaded/i })).toBeDefined();
+
+  rerender(<BookCard {...defaultProps} isDownloaded={true} />);
+  // Matches "Mark Test Book as not downloaded"
+  expect(getByRole("button", { name: /Mark .* as not downloaded/i })).toBeDefined();
+});
+
+test("BookCard calls onToggleRead when read button is clicked", () => {
   let clickedId = -1;
   const handleToggle = (id: number) => { clickedId = id; };
 
-  const { getByRole } = render(<BookCard book={mockBook} isRead={false} onToggleRead={handleToggle} />);
+  const { getByRole } = render(<BookCard {...defaultProps} onToggleRead={handleToggle} />);
 
-  fireEvent.click(getByRole("button"));
+  fireEvent.click(getByRole("button", { name: /Mark .* as read/i }));
+  expect(clickedId).toBe(1);
+});
+
+test("BookCard calls onToggleDownloaded when download button is clicked", () => {
+  let clickedId = -1;
+  const handleToggle = (id: number) => { clickedId = id; };
+
+  const { getByRole } = render(<BookCard {...defaultProps} onToggleDownloaded={handleToggle} />);
+
+  fireEvent.click(getByRole("button", { name: /Mark .* as downloaded/i }));
   expect(clickedId).toBe(1);
 });

@@ -19,5 +19,5 @@ test("Header renders correct title and subtitle", () => {
 test("Header has correct class name", () => {
   const { container } = render(<Header />);
   const headerElement = container.querySelector("header");
-  expect(headerElement?.className).toBe("app-header");
+  expect(headerElement?.className).toBe("text-center mb-8");
 });
