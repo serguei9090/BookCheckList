@@ -2,7 +2,7 @@
 
 ## Phase 1: Project Setup and Initial UI
 
-- [~] **Task: Initialize React Project with Bun**
+- [x] **Task: Initialize React Project with Bun** [b02d065]
     - [x] Write tests for initial project structure (e.g., verify `package.json` scripts, basic component rendering).
     - [x] Create a new React project using Bun.
     - [x] Configure `bunfig.toml` or equivalent for development setup.
