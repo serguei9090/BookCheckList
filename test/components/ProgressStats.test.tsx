@@ -7,31 +7,41 @@ afterEach(() => {
 });
 
 test("ProgressStats displays correct counts and percentage", () => {
-  const { getByText } = render(<ProgressStats readCount={5} totalCount={10} />);
+  const { getByText } = render(<ProgressStats readCount={5} downloadedCount={2} totalCount={10} />);
 
-  expect(getByText("5 of 10 books read")).toBeDefined();
+  expect(getByText("5")).toBeDefined();
+  expect(getByText(/of 10 books read/)).toBeDefined();
+
+  expect(getByText("2")).toBeDefined();
+  expect(getByText(/of 10 books downloaded/)).toBeDefined();
+
   expect(getByText("50%")).toBeDefined();
+  expect(getByText("20%")).toBeDefined();
 });
 
 test("ProgressStats handles zero totalCount", () => {
-  const { getByText } = render(<ProgressStats readCount={0} totalCount={0} />);
+  const { getAllByText, getByText } = render(<ProgressStats readCount={0} downloadedCount={0} totalCount={0} />);
 
-  expect(getByText("0 of 0 books read")).toBeDefined();
-  expect(getByText("0%")).toBeDefined();
+  expect(getAllByText("0")).toBeDefined();
+  expect(getByText(/of 0 books read/)).toBeDefined();
+  expect(getByText(/of 0 books downloaded/)).toBeDefined();
+  expect(getAllByText("0%")).toHaveLength(2);
 });
 
 test("ProgressStats rounds percentage correctly", () => {
-  const { getByText } = render(<ProgressStats readCount={1} totalCount={3} />);
+  // 1/3 = 33%, 2/3 = 67%
+  const { getByText } = render(<ProgressStats readCount={1} downloadedCount={2} totalCount={3} />);
 
-  // 1/3 = 0.333... -> 33%
   expect(getByText("33%")).toBeDefined();
+  expect(getByText("67%")).toBeDefined();
 });
 
 test("ProgressStats has correct aria attributes", () => {
-  const { getByRole } = render(<ProgressStats readCount={2} totalCount={4} />);
-  const progressBar = getByRole("progressbar");
+  const { getByLabelText } = render(<ProgressStats readCount={2} downloadedCount={1} totalCount={4} />);
 
-  expect(progressBar.getAttribute("aria-valuenow")).toBe("50");
-  expect(progressBar.getAttribute("aria-valuemin")).toBe("0");
-  expect(progressBar.getAttribute("aria-valuemax")).toBe("100");
+  const readBar = getByLabelText("Reading progress bar");
+  expect(readBar.getAttribute("aria-valuenow")).toBe("50");
+
+  const downloadBar = getByLabelText("Downloading progress bar");
+  expect(downloadBar.getAttribute("aria-valuenow")).toBe("25");
 });
