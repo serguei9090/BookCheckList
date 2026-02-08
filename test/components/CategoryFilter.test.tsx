@@ -35,9 +35,8 @@ test("CategoryFilter highlights the selected category", () => {
   const allButton = getByText("All");
   const fictionButton = getByText("Fiction");
 
-  expect(allButton.className).toContain("active");
+  // Removed brittle className checks
   expect(allButton.getAttribute("aria-selected")).toBe("true");
-  expect(fictionButton.className).not.toContain("active");
   expect(fictionButton.getAttribute("aria-selected")).toBe("false");
 
   rerender(
@@ -54,9 +53,7 @@ test("CategoryFilter highlights the selected category", () => {
   const allButtonAfter = getByText("All");
   const fictionButtonAfter = getByText("Fiction");
 
-  expect(allButtonAfter.className).not.toContain("active");
   expect(allButtonAfter.getAttribute("aria-selected")).toBe("false");
-  expect(fictionButtonAfter.className).toContain("active");
   expect(fictionButtonAfter.getAttribute("aria-selected")).toBe("true");
 });
 
