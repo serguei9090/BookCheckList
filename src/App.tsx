@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';
 import Header from './components/Header';
 import ProgressStats from './components/ProgressStats';
@@ -6,15 +6,15 @@ import CategoryFilter from './components/CategoryFilter';
 import BookCard from './components/BookCard';
 import booksData from './data/books.json';
 import type { Book } from './types';
-import './components/components.css';
 
 function App() {
   const [readBookIds, setReadBookIds] = useLocalStorage<number[]>('readBookIds', []);
+  const [downloadedBookIds, setDownloadedBookIds] = useLocalStorage<number[]>('downloadedBookIds', []);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const books: Book[] = booksData as Book[];
 
-  const toggleRead = (id: number) => {
+  const toggleRead = useCallback((id: number) => {
     setReadBookIds((prevIds) => {
       if (prevIds.includes(id)) {
         return prevIds.filter(bookId => bookId !== id);
@@ -22,7 +22,17 @@ function App() {
         return [...prevIds, id];
       }
     });
-  };
+  }, [setReadBookIds]);
+
+  const toggleDownloaded = useCallback((id: number) => {
+    setDownloadedBookIds((prevIds) => {
+      if (prevIds.includes(id)) {
+        return prevIds.filter(bookId => bookId !== id);
+      } else {
+        return [...prevIds, id];
+      }
+    });
+  }, [setDownloadedBookIds]);
 
   const categories = useMemo(() => Array.from(new Set(books.map(b => b.category))), [books]);
 
@@ -32,14 +42,16 @@ function App() {
     : books.filter(b => b.category === selectedCategory);
 
   const readCount = readBookIds.length;
+  const downloadedCount = downloadedBookIds.length;
   const totalCount = books.length;
 
   return (
-    <div className="app-container">
+    <div className="max-w-4xl mx-auto p-8 min-h-screen">
       <Header />
 
       <ProgressStats
         readCount={readCount}
+        downloadedCount={downloadedCount}
         totalCount={totalCount}
       />
 
@@ -49,19 +61,21 @@ function App() {
         onSelectCategory={setSelectedCategory}
       />
 
-      <main className="book-list" role="list">
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
         {filteredBooks.map(book => (
           <BookCard
             key={book.id}
             book={book}
             isRead={readBookIds.includes(book.id)}
             onToggleRead={toggleRead}
+            isDownloaded={downloadedBookIds.includes(book.id)}
+            onToggleDownloaded={toggleDownloaded}
           />
         ))}
       </main>
 
       {filteredBooks.length === 0 && (
-        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
+        <p className="text-center text-stone-500 mt-8">
           No books found in this category.
         </p>
       )}
