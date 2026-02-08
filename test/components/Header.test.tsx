@@ -6,8 +6,18 @@ afterEach(() => {
   cleanup();
 });
 
-test("Header renders correctly", () => {
-  render(<Header />);
-  expect(screen.getByRole('heading', { name: "📚 Reading Tracker" })).toBeInTheDocument();
-  expect(screen.getByText("Your personal library checklist")).toBeInTheDocument();
+test("Header renders correct title and subtitle", () => {
+  const { getByRole, getByText } = render(<Header />);
+
+  const heading = getByRole("heading", { level: 1 });
+  expect(heading.textContent).toBe("📚 Reading Tracker");
+
+  const subtitle = getByText("Your personal library checklist");
+  expect(subtitle).toBeDefined();
+});
+
+test("Header has correct class name", () => {
+  const { container } = render(<Header />);
+  const headerElement = container.querySelector("header");
+  expect(headerElement?.className).toBe("text-center mb-8");
 });
