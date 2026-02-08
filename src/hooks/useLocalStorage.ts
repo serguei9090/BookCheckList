@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { isDev } from '../utils/env';
 
 function useLocalStorage<T>(key: string, initialValue: T) {

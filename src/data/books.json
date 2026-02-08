@@ -58,5 +58,293 @@
     "title": "A Little Life",
     "author": "Hanya Yanagihara",
     "category": "Contemporary"
+  },
+  {
+    "id": 11,
+    "title": "Atusparia",
+    "author": "Gabriela Wiener",
+    "category": "Contemporary"
+  },
+  {
+    "id": 12,
+    "title": "Yomurí",
+    "author": "Cynthia Rimsky",
+    "category": "Contemporary"
+  },
+  {
+    "id": 13,
+    "title": "Perder el juicio",
+    "author": "Ariana Harwicz",
+    "category": "Contemporary"
+  },
+  {
+    "id": 14,
+    "title": "Los íntimos (Memoria del pan y las rosas)",
+    "author": "Marta Sanz",
+    "category": "Contemporary"
+  },
+  {
+    "id": 15,
+    "title": "Alcaravea",
+    "author": "Irene Reyes-Noguerol",
+    "category": "Contemporary"
+  },
+  {
+    "id": 16,
+    "title": "El guardián invisible",
+    "author": "Dolores Redondo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 17,
+    "title": "Legado en los huesos",
+    "author": "Dolores Redondo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 18,
+    "title": "Ofrenda a la tormenta",
+    "author": "Dolores Redondo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 19,
+    "title": "Todo esto te daré",
+    "author": "Dolores Redondo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 20,
+    "title": "Esperando al diluvio",
+    "author": "Dolores Redondo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 21,
+    "title": "Las que no duermen (NASH)",
+    "author": "Dolores Redondo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 22,
+    "title": "Reina Roja",
+    "author": "Juan Gómez-Jurado",
+    "category": "Thrillers"
+  },
+  {
+    "id": 23,
+    "title": "Loba Negra",
+    "author": "Juan Gómez-Jurado",
+    "category": "Thrillers"
+  },
+  {
+    "id": 24,
+    "title": "Rey Blanco",
+    "author": "Juan Gómez-Jurado",
+    "category": "Thrillers"
+  },
+  {
+    "id": 25,
+    "title": "La chica de nieve",
+    "author": "Javier Castillo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 26,
+    "title": "El cuco de cristal",
+    "author": "Javier Castillo",
+    "category": "Thrillers"
+  },
+  {
+    "id": 27,
+    "title": "La última noche en Tremore Beach",
+    "author": "Mikel Santiago",
+    "category": "Thrillers"
+  },
+  {
+    "id": 28,
+    "title": "Puerto escondido",
+    "author": "María Oruña",
+    "category": "Thrillers"
+  },
+  {
+    "id": 29,
+    "title": "A Book of Bones",
+    "author": "John Connolly",
+    "category": "Thrillers"
+  },
+  {
+    "id": 30,
+    "title": "The Dirty South",
+    "author": "John Connolly",
+    "category": "Thrillers"
+  },
+  {
+    "id": 31,
+    "title": "The Instruments of Darkness",
+    "author": "John Connolly",
+    "category": "Thrillers"
+  },
+  {
+    "id": 32,
+    "title": "A River Red With Blood",
+    "author": "John Connolly",
+    "category": "Thrillers"
+  },
+  {
+    "id": 33,
+    "title": "La Asistenta (The Housemaid)",
+    "author": "Frieda McFadden",
+    "category": "Thrillers"
+  },
+  {
+    "id": 34,
+    "title": "El secreto de la asistenta",
+    "author": "Frieda McFadden",
+    "category": "Thrillers"
+  },
+  {
+    "id": 35,
+    "title": "La asistenta te vigila",
+    "author": "Frieda McFadden",
+    "category": "Thrillers"
+  },
+  {
+    "id": 36,
+    "title": "The Teacher",
+    "author": "Frieda McFadden",
+    "category": "Thrillers"
+  },
+  {
+    "id": 37,
+    "title": "Human Acts",
+    "author": "Han Kang",
+    "category": "Contemporary"
+  },
+  {
+    "id": 38,
+    "title": "Un lugar soleado para gente sombría",
+    "author": "Mariana Enriquez",
+    "category": "Contemporary"
+  },
+  {
+    "id": 39,
+    "title": "Hurricane Season",
+    "author": "Fernanda Melchor",
+    "category": "Contemporary"
+  },
+  {
+    "id": 40,
+    "title": "Kim Jiyoung, Born 1982",
+    "author": "Cho Nam-joo",
+    "category": "Contemporary"
+  },
+  {
+    "id": 41,
+    "title": "Fear and Trembling",
+    "author": "Amélie Nothomb",
+    "category": "Contemporary"
+  },
+  {
+    "id": 42,
+    "title": "The Bell Jar",
+    "author": "Sylvia Plath",
+    "category": "Classics"
+  },
+  {
+    "id": 43,
+    "title": "Ariel",
+    "author": "Sylvia Plath",
+    "category": "Classics"
+  },
+  {
+    "id": 44,
+    "title": "The Unabridged Journals",
+    "author": "Sylvia Plath",
+    "category": "Classics"
+  },
+  {
+    "id": 45,
+    "title": "Letters Home",
+    "author": "Sylvia Plath",
+    "category": "Classics"
+  },
+  {
+    "id": 46,
+    "title": "Mrs. Dalloway",
+    "author": "Virginia Woolf",
+    "category": "Classics"
+  },
+  {
+    "id": 47,
+    "title": "To the Lighthouse",
+    "author": "Virginia Woolf",
+    "category": "Classics"
+  },
+  {
+    "id": 48,
+    "title": "A Room of One's Own",
+    "author": "Virginia Woolf",
+    "category": "Classics"
+  },
+  {
+    "id": 49,
+    "title": "Orlando",
+    "author": "Virginia Woolf",
+    "category": "Classics"
+  },
+  {
+    "id": 50,
+    "title": "White Nights",
+    "author": "Fyodor Dostoevsky",
+    "category": "Classics"
+  },
+  {
+    "id": 51,
+    "title": "No Longer Human",
+    "author": "Osamu Dazai",
+    "category": "Classics"
+  },
+  {
+    "id": 52,
+    "title": "Las malas",
+    "author": "Camila Sosa Villada",
+    "category": "Contemporary"
+  },
+  {
+    "id": 53,
+    "title": "Carcoma",
+    "author": "Layla Martínez",
+    "category": "Contemporary"
+  },
+  {
+    "id": 54,
+    "title": "Los nombres propios",
+    "author": "Marta Jiménez Serrano",
+    "category": "Contemporary"
+  },
+  {
+    "id": 55,
+    "title": "Yo no sé de otras cosas",
+    "author": "Elisa Levi",
+    "category": "Contemporary"
+  },
+  {
+    "id": 56,
+    "title": "El idioma de los peces",
+    "author": "Lara Armada",
+    "category": "Contemporary"
+  },
+  {
+    "id": 57,
+    "title": "Como bestias",
+    "author": "Violaine Bérot",
+    "category": "Contemporary"
+  },
+  {
+    "id": 58,
+    "title": "Por voluntad propia",
+    "author": "Mathilde Forget",
+    "category": "Contemporary"
   }
 ]
