@@ -7,24 +7,28 @@ afterEach(() => {
 });
 
 test("ProgressStats displays correct counts and percentage", () => {
-  const { getByText } = render(<ProgressStats readCount={5} downloadedCount={2} totalCount={10} />);
+  const { getByText, getAllByText } = render(<ProgressStats readCount={5} downloadedCount={2} totalCount={10} />);
 
   expect(getByText("5")).toBeDefined();
-  expect(getByText(/of 10 books read/)).toBeDefined();
+  expect(getAllByText(/of 10/)).toHaveLength(2);
+  expect(getByText("Books Read")).toBeDefined();
 
   expect(getByText("2")).toBeDefined();
-  expect(getByText(/of 10 books downloaded/)).toBeDefined();
+  expect(getByText("Books Collected")).toBeDefined();
 
   expect(getByText("50%")).toBeDefined();
   expect(getByText("20%")).toBeDefined();
 });
 
 test("ProgressStats handles zero totalCount", () => {
-  const { getAllByText, getByText } = render(<ProgressStats readCount={0} downloadedCount={0} totalCount={0} />);
+  const { getAllByText } = render(<ProgressStats readCount={0} downloadedCount={0} totalCount={0} />);
 
-  expect(getAllByText("0")).toBeDefined();
-  expect(getByText(/of 0 books read/)).toBeDefined();
-  expect(getByText(/of 0 books downloaded/)).toBeDefined();
+  // Depending on how exactly "0" is rendered (in text node or mixed), getAllByText("0") usually works for exact matches or partial if regex.
+  // Here we check if the counts 0 appear.
+  const zeros = getAllByText("0");
+  expect(zeros.length).toBeGreaterThan(0);
+
+  expect(getAllByText(/of 0/)).toHaveLength(2);
   expect(getAllByText("0%")).toHaveLength(2);
 });
 

@@ -8,9 +8,9 @@ afterEach(() => {
   cleanup();
 });
 
-test("App renders Reading Tracker heading", () => {
+test("App renders Reading Checklist heading", () => {
   const { getByText } = render(<App />);
-  const headingElement = getByText(/Reading Tracker/i);
+  const headingElement = getByText(/Reading Checklist/i);
   expect(headingElement).toBeInTheDocument();
 });
 
