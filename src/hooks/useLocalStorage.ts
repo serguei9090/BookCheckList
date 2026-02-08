@@ -26,11 +26,12 @@ function useLocalStorage<T>(key: string, initialValue: T) {
   const setValue = useCallback((value: T | ((val: T) => T)) => {
     try {
       // Allow value to be a function so we have same API as useState
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
 
       setStoredValue(valueToStore);
 
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
@@ -39,11 +40,6 @@ function useLocalStorage<T>(key: string, initialValue: T) {
       }
     }
   }, [key, storedValue]);
-
-  useEffect(() => {
-    setStoredValue(readValue());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return [storedValue, setValue] as const;
 }
