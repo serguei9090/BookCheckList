@@ -38,6 +38,9 @@ test("CategoryFilter highlights the selected category", () => {
   expect(allButton.getAttribute("aria-selected")).toBe("true");
   expect(fictionButton.getAttribute("aria-selected")).toBe("false");
 
+  // Optional: Check for visual indication via class presence (e.g., bg-stone-800)
+  // expect(allButton.className).toContain("bg-stone-800");
+
   rerender(
     <CategoryFilter
       selectedCategory="Fiction"
@@ -46,9 +49,6 @@ test("CategoryFilter highlights the selected category", () => {
     />
   );
 
-  // We need to re-query elements because rerender might have replaced them
-  // or at least we want to be sure we have the current DOM elements
-  // Although React usually updates in place, getting fresh references is safer.
   const allButtonAfter = getByText("All");
   const fictionButtonAfter = getByText("Fiction");
 

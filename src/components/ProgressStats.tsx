@@ -13,18 +13,22 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ readCount, downloadedCoun
   const downloadedPercentage = totalCount > 0 ? Math.round((downloadedCount / totalCount) * PERCENTAGE_MAX) : 0;
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm mb-8 border border-stone-200" aria-label="Reading progress">
+    <div className="bg-white p-8 rounded-2xl shadow-sm mb-8 border border-stone-200" aria-label="Reading progress">
       {/* Read Progress */}
-      <div className="mb-6">
-        <div className="flex justify-between mb-3 font-semibold text-amber-800">
+      <div className="mb-8">
+        <div className="flex justify-between mb-2 font-serif text-xl text-stone-800">
           <span className="stats-count">
-            <span className="text-emerald-600">{readCount}</span> <span className="text-stone-500">of {totalCount} books read</span>
+            Books Read
           </span>
-          <span className="stats-percent">{readPercentage}%</span>
+          <span className="stats-percent font-sans text-stone-500 text-base font-medium">{readPercentage}%</span>
         </div>
-        <div className="w-full h-3 bg-stone-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow={readPercentage} aria-valuemin={0} aria-valuemax={PERCENTAGE_MAX} aria-label="Reading progress bar">
+        <div className="flex items-baseline gap-2 mb-3">
+             <span className="text-4xl font-bold text-emerald-600 tracking-tight">{readCount}</span>
+             <span className="text-stone-400 text-sm font-sans">of {totalCount}</span>
+        </div>
+        <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden" role="progressbar" aria-valuenow={readPercentage} aria-valuemin={0} aria-valuemax={PERCENTAGE_MAX} aria-label="Reading progress bar">
           <div
-            className="h-full bg-amber-600 rounded-full transition-all duration-500 ease-out"
+            className="h-full bg-emerald-500 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${readPercentage}%` }}
           />
         </div>
@@ -32,15 +36,19 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ readCount, downloadedCoun
 
       {/* Download Progress */}
       <div>
-        <div className="flex justify-between mb-3 font-semibold text-sky-800">
+        <div className="flex justify-between mb-2 font-serif text-xl text-stone-800">
           <span className="stats-count">
-            <span className="text-sky-600">{downloadedCount}</span> <span className="text-stone-500">of {totalCount} books downloaded</span>
+            Books Collected
           </span>
-          <span className="stats-percent">{downloadedPercentage}%</span>
+          <span className="stats-percent font-sans text-stone-500 text-base font-medium">{downloadedPercentage}%</span>
         </div>
-        <div className="w-full h-3 bg-stone-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow={downloadedPercentage} aria-valuemin={0} aria-valuemax={PERCENTAGE_MAX} aria-label="Downloading progress bar">
+         <div className="flex items-baseline gap-2 mb-3">
+             <span className="text-4xl font-bold text-sky-600 tracking-tight">{downloadedCount}</span>
+             <span className="text-stone-400 text-sm font-sans">of {totalCount}</span>
+        </div>
+        <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden" role="progressbar" aria-valuenow={downloadedPercentage} aria-valuemin={0} aria-valuemax={PERCENTAGE_MAX} aria-label="Downloading progress bar">
           <div
-            className="h-full bg-sky-600 rounded-full transition-all duration-500 ease-out"
+            className="h-full bg-sky-500 rounded-full transition-all duration-500 ease-out"
             style={{ width: `${downloadedPercentage}%` }}
           />
         </div>

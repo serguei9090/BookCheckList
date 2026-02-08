@@ -12,69 +12,69 @@ interface BookCardProps {
 const getCategoryStyles = (category: string) => {
   switch (category.toLowerCase()) {
     case 'classics':
-      return 'bg-amber-100 text-amber-800';
+      return 'bg-amber-100 text-amber-900 border border-amber-200/50';
     case 'contemporary':
-      return 'bg-rose-100 text-rose-800';
+      return 'bg-rose-50 text-rose-900 border border-rose-100';
     case 'thrillers':
-      return 'bg-slate-200 text-slate-700';
+      return 'bg-stone-100 text-stone-800 border border-stone-200';
     default:
-      return 'bg-stone-100 text-stone-600';
+      return 'bg-stone-50 text-stone-600 border border-stone-200';
   }
 };
 
 const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead, isDownloaded, onToggleDownloaded }) => {
   return (
     <div
-      className={`bg-white rounded-xl p-6 shadow-sm border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md hover:border-amber-300 ${
-        isRead ? 'border-emerald-200 bg-stone-50/50' : 'border-stone-200'
+      className={`bg-white rounded-2xl p-6 shadow-sm border border-stone-200 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-xl hover:border-amber-300/50 ${
+        isRead ? 'grayscale opacity-60' : ''
       }`}
       role="article"
       aria-label={`Book card for ${book.title}`}
     >
       <div className="mb-4">
-        <h3 className="text-xl font-bold mb-1 text-stone-900 leading-tight font-serif">{book.title}</h3>
-        <p className="text-stone-500 mb-4 text-sm font-medium">by {book.author}</p>
-        <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 ${getCategoryStyles(book.category)}`}>
+        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-3 ${getCategoryStyles(book.category)}`}>
           {book.category}
         </span>
+        <h3 className="text-2xl font-bold mb-2 text-stone-900 leading-tight font-serif tracking-tight">{book.title}</h3>
+        <p className="text-stone-500 mb-6 text-sm font-sans font-medium italic">by {book.author}</p>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3 mt-auto">
         <button
           onClick={() => onToggleRead(book.id)}
-          className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${
+          className={`w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-200 border ${
             isRead
-              ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100'
-              : 'bg-stone-900 text-white hover:bg-stone-700 shadow-sm'
+              ? 'bg-emerald-50 text-emerald-700 border-emerald-200 shadow-inner'
+              : 'bg-stone-900 text-white border-stone-900 shadow-md hover:shadow-lg hover:bg-stone-800'
           }`}
           aria-pressed={isRead}
           aria-label={`Mark ${book.title} as ${isRead ? 'unread' : 'read'}`}
         >
           {isRead ? (
             <>
-              <span className="text-emerald-500">✓</span> Read
+              <span className="text-emerald-600">✓</span> Completed
             </>
           ) : (
-            '○ Mark as Read'
+            'Mark as Read'
           )}
         </button>
 
         <button
           onClick={() => onToggleDownloaded(book.id)}
-          className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${
+          className={`w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-200 border ${
             isDownloaded
-              ? 'bg-sky-50 text-sky-600 border border-sky-200 hover:bg-sky-100'
-              : 'bg-stone-100 text-stone-600 hover:bg-stone-200 shadow-sm'
+              ? 'bg-sky-50 text-sky-700 border-sky-200 shadow-inner'
+              : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:border-stone-300 hover:text-stone-900'
           }`}
           aria-pressed={isDownloaded}
           aria-label={`Mark ${book.title} as ${isDownloaded ? 'not downloaded' : 'downloaded'}`}
         >
           {isDownloaded ? (
             <>
-              <span className="text-sky-500">✓</span> Downloaded
+              <span className="text-sky-600">✓</span> In Library
             </>
           ) : (
-            '○ Download'
+            'Add to Library'
           )}
         </button>
       </div>

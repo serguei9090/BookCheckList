@@ -46,7 +46,7 @@ function App() {
   const totalCount = books.length;
 
   return (
-    <div className="max-w-4xl mx-auto p-8 min-h-screen">
+    <div className="max-w-5xl mx-auto p-8 min-h-screen bg-stone-50 font-sans">
       <Header />
 
       <ProgressStats
@@ -61,7 +61,7 @@ function App() {
         onSelectCategory={setSelectedCategory}
       />
 
-      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
         {filteredBooks.map(book => (
           <BookCard
             key={book.id}
@@ -75,8 +75,8 @@ function App() {
       </main>
 
       {filteredBooks.length === 0 && (
-        <p className="text-center text-stone-500 mt-8">
-          No books found in this category.
+        <p className="text-center text-stone-500 mt-12 font-serif text-lg italic">
+          No books found in this collection.
         </p>
       )}
     </div>
