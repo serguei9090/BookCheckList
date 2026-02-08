@@ -7,7 +7,7 @@ afterEach(() => {
 });
 
 test("Header renders correctly", () => {
-  const { getByText } = render(<Header />);
-  expect(getByText("📚 Reading Tracker")).toBeDefined();
-  expect(getByText("Your personal library checklist")).toBeDefined();
+  render(<Header />);
+  expect(screen.getByRole('heading', { name: "📚 Reading Tracker" })).toBeInTheDocument();
+  expect(screen.getByText("Your personal library checklist")).toBeInTheDocument();
 });
