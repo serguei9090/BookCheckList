@@ -25,8 +25,8 @@ const getCategoryStyles = (category: string) => {
 const BookCard: React.FC<BookCardProps> = ({ book, isRead, onToggleRead, isDownloaded, onToggleDownloaded }) => {
   return (
     <div
-      className={`bg-white rounded-2xl p-6 shadow-sm border transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-xl hover:border-amber-300/50 ${
-        isRead ? 'grayscale opacity-60 border-stone-200' : 'border-stone-200'
+      className={`bg-white rounded-2xl p-6 shadow-sm border border-stone-200 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-xl hover:border-amber-300/50 ${
+        isRead ? 'grayscale opacity-60' : ''
       }`}
       role="article"
       aria-label={`Book card for ${book.title}`}
